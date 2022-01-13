@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<title>Simple Shortcode to Insert Raw HTML in Hugo</title>
+
+
+  
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  href="https://z3mu.github.io/index.xml"
+  title="z3mu.github.io"
+/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Simple Shortcode to Insert Raw HTML in Hugo"/>
+<meta name="twitter:description" content="Simple Shortcode to Insert Raw HTML in Hugo"/>
+
+
+
+<link rel="stylesheet" href="https://z3mu.github.io/fontawesome/css/all.min.css" />
+
+
+
+
+<link
+  crossorigin="anonymous"
+  href="/css/styles.min.css"
+  integrity=""
+  rel="preload stylesheet"
+  as="style"
+/>
+
+
+
+
+<link
+  id="dark-mode-theme"
+  crossorigin="anonymous"
+  href="/css/dark.min.css"
+  integrity=""
+  rel="preload stylesheet"
+  as="style"
+/>
+
+
+<script>
+  var darkTheme = document.getElementById('dark-mode-theme')
+  var storedTheme = localStorage.getItem('dark-mode-storage')
+
+  if (storedTheme === 'dark') {
+    darkTheme.disabled = false
+  } else if (storedTheme === 'light') {
+    darkTheme.disabled = true
+  }
+</script>
+
+
+<script defer crossorigin="anonymous" src="/js/theme.js" integrity=""></script>
+
+
+<script defer crossorigin="anonymous" src="/js/instantpage.min.js" integrity=""></script><meta name="generator" content="Hugo 0.91.2" />
+  </head>
+  <body>
+    
+
+
+  
+
+
+
+
+  <header>
+    <nav class="navbar">
+  <div class="nav">
+    
+      <a href="https://z3mu.github.io/" class="nav-logo">
+        <img
+          src="https://z3mu.github.io/images/icon2.png"
+          width="50"
+          height="50"
+          alt="Logo"
+        />
+      </a>
+    
+
+    <ul class="nav-links">
+      
+        
+          <li>
+            <a href="/archives/" id="Archives"
+              ><em class="fas fa-archive fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/categories/" id="Categories"
+              ><em class="fas fa-folder-open fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/tags/" id="Tags"
+              ><em class="fas fa-tag fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/links/" id="Links"
+              ><em class="fas fa-link fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/about/" id="About"
+              ><em class="fas fa-user fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/search/" id="Search"
+              ><em class="fas fa-search fa-lg"></em
+            ></a>
+          </li>
+          
+      
+    </ul>
+  </div>
+</nav>
+
+    <div class="intro-header">
+      <div class="container">
+        <div class="post-heading">
+          
+            <h1>
+              Simple Shortcode to Insert Raw HTML in Hugo
+            </h1>
+          
+          
+            <span class="meta-post">
+  <em class="fa fa-calendar-alt"></em
+  >&nbsp;Mar 9, 2019
+  
+    &nbsp;&nbsp;&nbsp;<em class="fa fa-folder-open"></em>&nbsp;
+    
+      <a
+        href="https://z3mu.github.io/categories/hugo/"
+        >hugo</a
+      >&nbsp;
+    
+  
+</span>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+    
+  <div class="container" role="main">
+    <article class="article" class="blog-post">
+      
+  <p>I love the simplicity of creating new content using markdown in <a href="https://gohugo.io/">Hugo</a>. But sometimes, markdown is not enough – you might want to do a one-off extra-fancy thing with raw html.</p>
+<p>Surprisingly, Hugo doesn’t seem to have a good way to let you do this in a content file. Here is how to create your own one-line custom <code>shortcode</code> to make that possible.</p>
+<p>Add a shortcode template to your site, in <code>layouts/shortcodes/rawhtml.html</code>, with the content:</p>
+<pre tabindex="0"><code>&lt;!-- raw html --&gt;
+{{.Inner}}
+</code></pre><p>This template tells Hugo to simply render the inner content passed to your shortcode directly into the HTML of your site.</p>
+<p>You can then use this shortcode in your markdown content, like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{{</span>&lt; rawhtml &gt;<span style="color:#f92672">}}</span>
+  &lt;p class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;speshal-fancy-custom&#34;</span>&gt;
+    This is &lt;strong&gt;raw HTML&lt;/strong&gt;, inside Markdown.
+  &lt;/p&gt;
+<span style="color:#f92672">{{</span>&lt; /rawhtml &gt;<span style="color:#f92672">}}</span>
+</code></pre></div><p><strong>Note</strong>: to avoid parsing of shortcodes inside code blocks, just like above, you should add <code>/* */</code> in your shortcode, such as {{&lt;/* rawhtml */&gt;}} and {{&lt;/* /rawhtml */&gt;}}.</p>
+<p>For example, insert the following raw html, which represents a svg image.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">svg</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;canon&#34;</span> <span style="color:#a6e22e">xmlns</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://www.w3.org/2000/svg&#34;</span> <span style="color:#a6e22e">overflow</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;visible&#34;</span> <span style="color:#a6e22e">viewBox</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0 0 496 373&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;373&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;496&#34;</span>&gt;&lt;<span style="color:#f92672">g</span> <span style="color:#a6e22e">fill</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>&gt;&lt;<span style="color:#f92672">path</span> <span style="color:#a6e22e">stroke</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#000&#34;</span> <span style="color:#a6e22e">stroke-width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.75&#34;</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515&#34;</span>&gt;&lt;/<span style="color:#f92672">path</span>&gt;&lt;<span style="color:#f92672">path</span> <span style="color:#a6e22e">stroke</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#ED1C24&#34;</span> <span style="color:#a6e22e">stroke-width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.75&#34;</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z&#34;</span>&gt;&lt;/<span style="color:#f92672">path</span>&gt;&lt;<span style="color:#f92672">path</span> <span style="color:#a6e22e">stroke</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#000&#34;</span> <span style="color:#a6e22e">stroke-width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.75&#34;</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;M.479.375h495v372h-495zM247.979.875v372&#34;</span>&gt;&lt;/<span style="color:#f92672">path</span>&gt;&lt;<span style="color:#f92672">ellipse</span> <span style="color:#a6e22e">cx</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;498.729&#34;</span> <span style="color:#a6e22e">cy</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;177.625&#34;</span> <span style="color:#a6e22e">rx</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.75&#34;</span> <span style="color:#a6e22e">ry</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.25&#34;</span>&gt;&lt;/<span style="color:#f92672">ellipse</span>&gt;&lt;<span style="color:#f92672">ellipse</span> <span style="color:#a6e22e">cx</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;247.229&#34;</span> <span style="color:#a6e22e">cy</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;377.375&#34;</span> <span style="color:#a6e22e">rx</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.75&#34;</span> <span style="color:#a6e22e">ry</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.25&#34;</span>&gt;&lt;/<span style="color:#f92672">ellipse</span>&gt;&lt;/<span style="color:#f92672">g</span>&gt;&lt;/<span style="color:#f92672">svg</span>&gt;
+</code></pre></div>
+
+<svg class="canon" xmlns="http://www.w3.org/2000/svg" overflow="visible" viewBox="0 0 496 373" height="373" width="496"><g fill="none"><path stroke="#000" stroke-width=".75" d="M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515"></path><path stroke="#ED1C24" stroke-width=".75" d="M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z"></path><path stroke="#000" stroke-width=".75" d="M.479.375h495v372h-495zM247.979.875v372"></path><ellipse cx="498.729" cy="177.625" rx=".75" ry="1.25"></ellipse><ellipse cx="247.229" cy="377.375" rx=".75" ry="1.25"></ellipse></g></svg>
+
+
+
+<style>
+.canon { background: white; width: 100%; height: auto;}
+</style>
+
+<p><strong>Remark</strong>: Here&rsquo;s another solution. By default, Goldmark does not render raw HTMLs and potentially dangerous links. If you have lots of inline HTML and/or JavaScript, you may need to set <code>unsafe: true</code>. i.e.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">markup</span>]
+    [<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>]
+        [<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>.<span style="color:#a6e22e">renderer</span>]
+            <span style="color:#a6e22e">unsafe</span> = <span style="color:#66d9ef">true</span>
+</code></pre></div><p>See documentation <a href="https://gohugo.io/getting-started/configuration-markup#goldmark">Goldmark Configuration 35</a>.</p>
+
+
+
+
+      
+        <div class="blog-tags">
+          
+            <a
+              href="https://z3mu.github.io/tags/shortcodes/"
+              >shortcodes</a
+            >&nbsp;
+          
+            <a
+              href="https://z3mu.github.io/tags/hugo/"
+              >hugo</a
+            >&nbsp;
+          
+            <a
+              href="https://z3mu.github.io/tags/html/"
+              >html</a
+            >&nbsp;
+          
+        </div>
+      
+    </article>
+    
+    
+      
+
+    
+     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+
+    <div id="gitalk-container"></div>     
+    <script type="text/javascript">
+       var gitalk = new Gitalk({
+       
+          clientID: "969ec6161f4d3e58c842",   
+          clientSecret: "563af2691db2222526fb597599d386424814e4dd",
+          repo: "gitalk-comments",  
+          owner: "z3mu",   
+          admin: ["z3mu"],  
+          id: location.pathname, 
+          });
+          gitalk.render('gitalk-container');
+    </script> 
+  </div>
+
+    <footer>
+  
+
+<div class="social-icons">
+  
+    
+    
+      
+      <a href="https://github.com/z3mu/" name="GitHub">
+        <em class="fab fa-github"></em>
+      </a>
+    
+  
+
+  
+</div>
+
+
+  
+  <div class="container">
+    <p class="credits copyright">
+      <a href="https://z3mu.github.io/about">z3mu</a>
+      &nbsp;&copy;
+      2022
+      
+        &nbsp;/&nbsp;
+        <a href="https://z3mu.github.io/">z3mu.github.io</a>
+      
+      &nbsp;&ndash;&nbsp;
+      <em class="fas fa-moon" id="dark-mode-toggle"></em>
+    </p>
+
+    <p class="credits theme-by">
+      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
+      Theme
+      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

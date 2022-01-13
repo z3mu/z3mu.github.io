@@ -1,0 +1,69 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>syntax on z3mu.github.io</title>
+		<link>https://z3mu.github.io/tags/syntax/</link>
+		<description>Recent content in syntax </description>
+		<generator>Hugo -- gohugo.io</generator>
+		
+  		<language>en</language>
+		
+		<managingEditor>Page(/tags/syntax) (z3mu)</managingEditor>
+    	
+  		<lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+		
+		<atom:link href="/tags/syntax/" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Add Gitalk for Comments in Hugo</title>
+			<link>https://z3mu.github.io/2022/01/13/add-gitalk-for-comments-in-hugo/</link>
+			<pubDate>Thu, 13 Jan 2022 15:28:01 +0800</pubDate>
+			<guid>https://z3mu.github.io/2022/01/13/add-gitalk-for-comments-in-hugo/</guid>
+			<description>Gitalk is a comment plug-in developed based on Github Issue and Preact. It cleverly uses the function of github issue to develop a plug-in, which requires users to have a github account.
+  First, you need to choose a public github repository (existing or create a new one) for storing comments
+  Then you need to create GitHub the Application , if not click here to apply , Authorization callback URLfill out the domain name currently used plug-in page.</description>
+		</item>
+      	
+		<item>
+			<title>Markdown Syntax Guide</title>
+			<link>https://z3mu.github.io/2019/03/11/markdown-syntax/</link>
+			<pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>https://z3mu.github.io/2019/03/11/markdown-syntax/</guid>
+			<description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+		</item>
+      	
+		<item>
+			<title>Rich Content</title>
+			<link>https://z3mu.github.io/2019/03/10/rich-content/</link>
+			<pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>https://z3mu.github.io/2019/03/10/rich-content/</guid>
+			<description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
+		</item>
+      	
+		<item>
+			<title>Simple Shortcode to Insert Raw HTML in Hugo</title>
+			<link>https://z3mu.github.io/2019/03/09/simple-shortcode-to-insert-raw-html/</link>
+			<pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>https://z3mu.github.io/2019/03/09/simple-shortcode-to-insert-raw-html/</guid>
+			<description>I love the simplicity of creating new content using markdown in Hugo. But sometimes, markdown is not enough – you might want to do a one-off extra-fancy thing with raw html.
+Surprisingly, Hugo doesn’t seem to have a good way to let you do this in a content file. Here is how to create your own one-line custom shortcode to make that possible.
+Add a shortcode template to your site, in layouts/shortcodes/rawhtml.</description>
+		</item>
+      	
+		<item>
+			<title>Math Typesetting</title>
+			<link>https://z3mu.github.io/2019/03/08/math-typesetting/</link>
+			<pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>https://z3mu.github.io/2019/03/08/math-typesetting/</guid>
+			<description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+		</item>
+      	
+		<item>
+			<title>Emoji Support</title>
+			<link>https://z3mu.github.io/2019/03/05/emoji-support/</link>
+			<pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>https://z3mu.github.io/2019/03/05/emoji-support/</guid>
+			<description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+		</item>
+      	
+	</channel>
+</rss>

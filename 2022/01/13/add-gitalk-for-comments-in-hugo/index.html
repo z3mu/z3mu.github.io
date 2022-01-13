@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<title>Add Gitalk for Comments in Hugo</title>
+
+
+  
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  href="https://z3mu.github.io/index.xml"
+  title="z3mu.github.io"
+/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Add Gitalk for Comments in Hugo"/>
+<meta name="twitter:description" content="Add Gitalk for Comments in Hugo"/>
+
+
+
+<link rel="stylesheet" href="https://z3mu.github.io/fontawesome/css/all.min.css" />
+
+
+
+
+<link
+  crossorigin="anonymous"
+  href="/css/styles.min.css"
+  integrity=""
+  rel="preload stylesheet"
+  as="style"
+/>
+
+
+
+
+<link
+  id="dark-mode-theme"
+  crossorigin="anonymous"
+  href="/css/dark.min.css"
+  integrity=""
+  rel="preload stylesheet"
+  as="style"
+/>
+
+
+<script>
+  var darkTheme = document.getElementById('dark-mode-theme')
+  var storedTheme = localStorage.getItem('dark-mode-storage')
+
+  if (storedTheme === 'dark') {
+    darkTheme.disabled = false
+  } else if (storedTheme === 'light') {
+    darkTheme.disabled = true
+  }
+</script>
+
+
+<script defer crossorigin="anonymous" src="/js/theme.js" integrity=""></script>
+
+
+<script defer crossorigin="anonymous" src="/js/instantpage.min.js" integrity=""></script><meta name="generator" content="Hugo 0.91.2" />
+  </head>
+  <body>
+    
+
+
+  
+
+
+
+
+  <header>
+    <nav class="navbar">
+  <div class="nav">
+    
+      <a href="https://z3mu.github.io/" class="nav-logo">
+        <img
+          src="https://z3mu.github.io/images/icon2.png"
+          width="50"
+          height="50"
+          alt="Logo"
+        />
+      </a>
+    
+
+    <ul class="nav-links">
+      
+        
+          <li>
+            <a href="/archives/" id="Archives"
+              ><em class="fas fa-archive fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/categories/" id="Categories"
+              ><em class="fas fa-folder-open fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/tags/" id="Tags"
+              ><em class="fas fa-tag fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/links/" id="Links"
+              ><em class="fas fa-link fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/about/" id="About"
+              ><em class="fas fa-user fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/search/" id="Search"
+              ><em class="fas fa-search fa-lg"></em
+            ></a>
+          </li>
+          
+      
+    </ul>
+  </div>
+</nav>
+
+    <div class="intro-header">
+      <div class="container">
+        <div class="post-heading">
+          
+            <h1>
+              Add Gitalk for Comments in Hugo
+            </h1>
+          
+          
+            <span class="meta-post">
+  <em class="fa fa-calendar-alt"></em
+  >&nbsp;Jan 13, 2022
+  
+    &nbsp;&nbsp;&nbsp;<em class="fa fa-folder-open"></em>&nbsp;
+    
+      <a
+        href="https://z3mu.github.io/categories/hugo/"
+        >hugo</a
+      >&nbsp;
+    
+  
+</span>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+    
+  <div class="container" role="main">
+    <article class="article" class="blog-post">
+      
+  <p>Gitalk is a comment plug-in developed based on Github Issue and Preact. It cleverly uses the function of github issue to develop a plug-in, which requires users to have a github account.</p>
+<ol>
+<li>
+<p>First, you need to choose a public github repository (existing or create a new one) for storing comments</p>
+</li>
+<li>
+<p>Then you need to create <strong>GitHub the Application</strong> , if not <a href="https://github.com/settings/applications/new">click here to apply</a> , <code>Authorization callback URL</code>fill out the domain name currently used plug-in page. Then you can get the Client ID and Client Secret, such as</p>
+<pre tabindex="0"><code>    Client ID
+       194e36d3bbcd14e7def9
+    Client Secret
+       2c99c40d21596f4dc7b9f31a76467ec19c72e653
+</code></pre></li>
+<li>
+<p>After registration, add the following code to <code>layouts/partials/gitalk.html</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"> &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://unpkg.com/gitalk/dist/gitalk.css&#34;</span>&gt;
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://unpkg.com/gitalk@latest/dist/gitalk.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt; 
+
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gitalk-container&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;     
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+       <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">gitalk</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Gitalk</span>({
+       <span style="color:#75715e">// gitalk main parameters
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">clientID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`xxxx`</span>,   <span style="color:#75715e">//clientID
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">clientSecret</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`xxxxx`</span>,<span style="color:#75715e">//clientSecret
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">repo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`clouda3`</span>,  <span style="color:#75715e">//your repo name
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">owner</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;clouda3&#39;</span>,   <span style="color:#75715e">//your GitHub id
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">admin</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;clouda3&#39;</span>],  <span style="color:#75715e">//your GitHub id
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>, <span style="color:#75715e">//The id cannot be repeated. If it is repeated, it will introduce comments from other pages.
+</span><span style="color:#75715e"></span>          });
+          <span style="color:#a6e22e">gitalk</span>.<span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;gitalk-container&#39;</span>);
+    &lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div></li>
+<li>
+<p>In the proper position of <code>layouts/_default/single.html</code> insert <code>{{ partial &quot;gitalk.html&quot; . }}</code></p>
+</li>
+</ol>
+
+
+
+
+      
+        <div class="blog-tags">
+          
+            <a
+              href="https://z3mu.github.io/tags/gitalk/"
+              >gitalk</a
+            >&nbsp;
+          
+            <a
+              href="https://z3mu.github.io/tags/hugo/"
+              >hugo</a
+            >&nbsp;
+          
+        </div>
+      
+    </article>
+    
+    
+      
+
+    
+     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+
+    <div id="gitalk-container"></div>     
+    <script type="text/javascript">
+       var gitalk = new Gitalk({
+       
+          clientID: "969ec6161f4d3e58c842",   
+          clientSecret: "563af2691db2222526fb597599d386424814e4dd",
+          repo: "gitalk-comments",  
+          owner: "z3mu",   
+          admin: ["z3mu"],  
+          id: location.pathname, 
+          });
+          gitalk.render('gitalk-container');
+    </script> 
+  </div>
+
+    <footer>
+  
+
+<div class="social-icons">
+  
+    
+    
+      
+      <a href="https://github.com/z3mu/" name="GitHub">
+        <em class="fab fa-github"></em>
+      </a>
+    
+  
+
+  
+</div>
+
+
+  
+  <div class="container">
+    <p class="credits copyright">
+      <a href="https://z3mu.github.io/about">z3mu</a>
+      &nbsp;&copy;
+      2022
+      
+        &nbsp;/&nbsp;
+        <a href="https://z3mu.github.io/">z3mu.github.io</a>
+      
+      &nbsp;&ndash;&nbsp;
+      <em class="fas fa-moon" id="dark-mode-toggle"></em>
+    </p>
+
+    <p class="credits theme-by">
+      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
+      Theme
+      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

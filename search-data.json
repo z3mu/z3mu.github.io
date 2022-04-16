@@ -75,6 +75,16 @@
         ,
             {
                 "id": 7,
+                "href": "https://z3mu.github.io/ebooks/",
+                "title": "Ebooks",
+                "section": "page",
+                "date" : "0001.01.01",
+                "body": " Mathematics Stack Exchange LaTeX Stack Exchange: TeX Cross Validated - Stack Exchange Home - MATLAB Central - MathWorks  "
+            }
+    
+        ,
+            {
+                "id": 8,
                 "href": "https://z3mu.github.io/links/",
                 "title": "Links",
                 "section": "page",
